@@ -1,23 +1,23 @@
 import 'package:bloc/bloc.dart';
 import 'package:meta/meta.dart';
+import 'package:aladia/features/authentication/domain/usecases/login_usecase.dart';
 
 part 'login_event.dart';
 part 'login_state.dart';
 
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  LoginBloc() : super(LoginInitial()) {
+  final LoginUseCase loginUseCase;
+  LoginBloc(this.loginUseCase) : super(LoginInitial()) {
     // Handle Login with email and password
     on<LoginRequested>((event, emit) async {
       emit(LoginLoading());
       try {
-        // Simulate login process
-        await Future.delayed(Duration(seconds: 2));
-
-        // If login is successful, emit LoginSuccess
-        emit(LoginSuccess());
+        final response =
+            await loginUseCase.execute(event.email, event.password);
+        //think about including the response in the state
+        emit(LoginSuccess(response.accessToken));
       } catch (error) {
-        // If login fails, emit LoginFailure
-        emit(LoginFailure('Login Failed: ${error.toString()}'));
+        emit(LoginFailure('Failed to login: ${error.toString()}'));
       }
     });
 
@@ -28,7 +28,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         // Simulate Google login process
         await Future.delayed(Duration(seconds: 2));
 
-        emit(LoginSuccess());
+        emit(LoginSuccess("success"));
       } catch (error) {
         emit(LoginFailure('Google Login Failed: ${error.toString()}'));
       }
@@ -41,7 +41,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         // Simulate Facebook login process
         await Future.delayed(Duration(seconds: 2));
 
-        emit(LoginSuccess());
+        emit(LoginSuccess("success"));
       } catch (error) {
         emit(LoginFailure('Facebook Login Failed: ${error.toString()}'));
       }
@@ -54,7 +54,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         // Simulate Apple login process
         await Future.delayed(Duration(seconds: 2));
 
-        emit(LoginSuccess());
+        emit(LoginSuccess("success"));
       } catch (error) {
         emit(LoginFailure('Apple Login Failed: ${error.toString()}'));
       }

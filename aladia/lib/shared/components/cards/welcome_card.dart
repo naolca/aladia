@@ -28,8 +28,10 @@ class WelcomeCard extends StatelessWidget {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(0, 10, 10, 0),
+                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         "Welcome to Aladia",

@@ -33,19 +33,24 @@ class AppTheme {
   // Define the dark theme
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
+    primaryColor: Colors.black,
     primarySwatch: Colors.blueGrey,
     appBarTheme: AppBarTheme(
       color: Colors.blueGrey[900],
     ),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.black, // Button background color is black
+        backgroundColor: Colors.black,
+        side: BorderSide(color: Colors.white60, width: 0.7),
+
+        // Button background color is black
       ),
     ),
     textTheme: TextTheme(
       displayLarge: TextStyle(color: Colors.white), // Large text color is white
-      displayMedium:
-          TextStyle(color: Colors.black87), // Small text color is light white
+      displayMedium: TextStyle(color: Colors.white54),
+
+      // Small text color is light white
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
