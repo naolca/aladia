@@ -80,8 +80,7 @@ class LoginPage extends StatelessWidget {
                           children: [
                             Text(
                               '${state.error}',
-                              style: TextStyle(
-                                  color: Theme.of(context).errorColor),
+                              style: TextStyle(color: Colors.red),
                             ),
                             ActionButton(
                                 onPressed: () {

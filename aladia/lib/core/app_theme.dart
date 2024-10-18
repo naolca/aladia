@@ -6,7 +6,6 @@ class AppTheme {
     primaryColor: Colors.white,
     cardColor: Colors.teal[50],
     brightness: Brightness.light,
-    errorColor: Colors.red,
     appBarTheme: AppBarTheme(
       color: Colors.blue,
     ),
@@ -38,7 +37,6 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: Colors.black,
-    errorColor: Colors.red,
     appBarTheme: AppBarTheme(
       color: Colors.blueGrey[900],
     ),
