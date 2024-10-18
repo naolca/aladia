@@ -6,6 +6,7 @@ class AppTheme {
     primaryColor: Colors.white,
     cardColor: Colors.teal[50],
     brightness: Brightness.light,
+    errorColor: Colors.red,
     appBarTheme: AppBarTheme(
       color: Colors.blue,
     ),
