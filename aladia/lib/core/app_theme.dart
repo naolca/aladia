@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class AppTheme {
   // Define the light theme
   static ThemeData lightTheme = ThemeData(
-    primaryColor: Colors.black,
+    primaryColor: Colors.white,
     cardColor: Colors.teal[50],
     brightness: Brightness.light,
     appBarTheme: AppBarTheme(
@@ -23,7 +23,10 @@ class AppTheme {
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
-      fillColor: Colors.grey, // Input color is gray
+      fillColor: Colors.grey,
+      // Input color is gray
+      hintStyle: TextStyle(color: Colors.black),
+
       border: OutlineInputBorder(
         borderSide: BorderSide(color: Colors.black), // Border color is black
       ),
@@ -34,7 +37,7 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: Colors.black,
-    primarySwatch: Colors.blueGrey,
+    errorColor: Colors.red,
     appBarTheme: AppBarTheme(
       color: Colors.blueGrey[900],
     ),
@@ -54,6 +57,7 @@ class AppTheme {
     ),
     inputDecorationTheme: InputDecorationTheme(
       filled: true,
+      hintStyle: TextStyle(color: Colors.black),
       fillColor: Colors.white, // Input color is white
       border: OutlineInputBorder(
         borderSide: BorderSide(color: Colors.white), // Border color is white

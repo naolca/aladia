@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class ActionButton extends StatelessWidget {
   final Function() onPressed;
+  final Widget child;
 
-  const ActionButton({super.key, required this.onPressed});
+  const ActionButton({super.key, required this.onPressed, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -22,17 +23,12 @@ class ActionButton extends StatelessWidget {
           ),
           textStyle: MaterialStateProperty.all(
             TextStyle(
-              color: Theme.of(context).textTheme.displayMedium?.color,
+              color: Theme.of(context).textTheme.displayLarge?.color,
+              fontWeight: FontWeight.bold,
             ),
           ),
         ),
-        child: Text(
-          "Enter",
-          style: TextStyle(
-            fontWeight: FontWeight.bold,
-            color: Theme.of(context).textTheme.displayLarge?.color,
-          ),
-        ),
+        child: child,
       ),
     );
   }

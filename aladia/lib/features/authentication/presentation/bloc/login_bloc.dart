@@ -17,7 +17,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         //think about including the response in the state
         emit(LoginSuccess(response.accessToken));
       } catch (error) {
-        emit(LoginFailure('Failed to login: ${error.toString()}'));
+        emit(LoginFailure('${error.toString()}'));
       }
     });
 

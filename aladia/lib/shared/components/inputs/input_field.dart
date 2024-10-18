@@ -21,6 +21,7 @@ class InputField extends StatelessWidget {
       child: Container(
         height: 50,
         child: TextFormField(
+          style: TextStyle(color: Theme.of(context).primaryColor),
           controller: controller,
           obscureText: isPassword, // To hide password input
           decoration: InputDecoration(

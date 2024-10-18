@@ -15,6 +15,11 @@ class WelcomeCard extends StatelessWidget {
           //you can an image as a backgound later
 
           borderRadius: BorderRadius.circular(10.0),
+          image: DecorationImage(
+            image: AssetImage(
+                'assets/images/gradient.png'), // Set the background image here
+            fit: BoxFit.cover,
+          ),
         ),
         child: Center(
           child: Row(
