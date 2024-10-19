@@ -5,14 +5,16 @@ class InputField extends StatelessWidget {
   final IconData icon;
   final bool isPassword;
   final TextEditingController controller;
+  final bool? isDisabled;
 
-  const InputField({
-    Key? key,
-    required this.hintText,
-    required this.icon,
-    this.isPassword = false,
-    required this.controller,
-  }) : super(key: key);
+  const InputField(
+      {Key? key,
+      required this.hintText,
+      required this.icon,
+      this.isPassword = false,
+      required this.controller,
+      required this.isDisabled})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,7 @@ class InputField extends StatelessWidget {
       child: Container(
         height: 50,
         child: TextFormField(
+          enabled: !isDisabled!,
           style: TextStyle(color: Theme.of(context).primaryColor),
           controller: controller,
           obscureText: isPassword, // To hide password input

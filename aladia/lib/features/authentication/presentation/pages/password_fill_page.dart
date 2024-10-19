@@ -1,5 +1,4 @@
-import 'package:aladia/features/authentication/presentation/pages/password_fill_page.dart';
-import 'package:aladia/features/authentication/presentation/pages/signup_page.dart';
+import 'package:aladia/features/authentication/data/models/login_model.dart';
 import 'package:aladia/shared/components/buttons/action_button.dart';
 import 'package:aladia/shared/components/buttons/social_login_button.dart';
 import 'package:aladia/shared/components/cards/welcome_card.dart';
@@ -10,10 +9,13 @@ import 'package:aladia/features/authentication/presentation/bloc/login_bloc.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:aladia/features/authentication/presentation/bloc/login_bloc.dart';
-import 'package:aladia/shared/components/inputs/input_field.dart'; // Import the new InputField widget
+import 'package:aladia/shared/components/inputs/input_field.dart';
+// Import the new InputField widget
+import "package:aladia/features/authentication/presentation/pages/login_success_page.dart";
 
-class LoginPage extends StatelessWidget {
-  const LoginPage({super.key});
+class PasswordFillPage extends StatelessWidget {
+  final String email;
+  const PasswordFillPage({super.key, required this.email});
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +46,10 @@ class LoginPage extends StatelessWidget {
                     child: Container(
                       height: 50,
                       child: InputField(
-                        hintText: 'Enter your email',
+                        hintText: email,
                         icon: Icons.email,
                         controller: emailController,
-                        isDisabled: false,
+                        isDisabled: true,
                       ),
                     ),
                   ),
@@ -55,28 +57,30 @@ class LoginPage extends StatelessWidget {
                   // Password input field
 
                   const SizedBox(height: 16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 2),
+                    child: Container(
+                      height: 50,
+                      child: InputField(
+                        hintText: 'Enter your password',
+                        icon: Icons.lock,
+                        controller: passwordController,
+                        isDisabled: false,
+                        isPassword: true,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
                   // Login button
                   BlocListener<LoginBloc, LoginState>(
                     listener: (context, state) {
                       // TODO: implement listener
-                      if (state is UserExists) {
-                        // navigate to password fill page
+                      if (state is LoginSuccess) {
                         WidgetsBinding.instance.addPostFrameCallback((_) {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => PasswordFillPage(
-                                      email: emailController.text,
-                                    )),
-                          );
-                        });
-                      }
-                      if (state is UserDoesNotExist) {
-                        WidgetsBinding.instance.addPostFrameCallback((_) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => SignUpPage()),
+                                builder: (context) => LoginSuccessPage()),
                           );
                         });
                       }
@@ -101,10 +105,10 @@ class LoginPage extends StatelessWidget {
                               ),
                               ActionButton(
                                   onPressed: () {
-                                    final email = emailController.text;
+                                    final password = passwordController.text;
                                     context
                                         .read<LoginBloc>()
-                                        .add(CheckUserExistence(email));
+                                        .add(LoginRequested(email, password));
                                   },
                                   child: Text(
                                     "Enter",
@@ -118,13 +122,12 @@ class LoginPage extends StatelessWidget {
                             ],
                           );
                         }
-
                         return ActionButton(
                             onPressed: () {
-                              final email = emailController.text;
+                              final password = passwordController.text;
                               context
                                   .read<LoginBloc>()
-                                  .add(CheckUserExistence(email));
+                                  .add(LoginRequested(email, password));
                             },
                             child: Text(
                               "Enter",
@@ -139,39 +142,8 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const Text('Or'),
-                  const SizedBox(height: 16),
                   // Social login buttons
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      SocialLoginButton(
-                        icon:
-                            Image.asset("assets/icons/google.png", height: 24),
-                        label: 'Sign in with Google',
-                        onPressed: () {
-                          context.read<LoginBloc>().add(LoginWithGoogle());
-                        },
-                      ),
-                      const SizedBox(width: 16),
-                      SocialLoginButton(
-                        icon: Image.asset("assets/icons/facebook.png",
-                            height: 24),
-                        label: 'Sign in with Facebook',
-                        onPressed: () {
-                          context.read<LoginBloc>().add(LoginWithFacebook());
-                        },
-                      ),
-                      const SizedBox(width: 16),
-                      SocialLoginButton(
-                        icon: Image.asset("assets/icons/apple.png", height: 24),
-                        label: 'Sign in with Apple',
-                        onPressed: () {
-                          context.read<LoginBloc>().add(LoginWithApple());
-                        },
-                      ),
-                    ],
-                  ),
+
                   const SizedBox(height: 16),
                   const Text('Terms & conditions'),
                 ],
@@ -183,16 +155,3 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
-
-//  Padding(
-//               padding: const EdgeInsets.symmetric(horizontal: 40),
-//               child: Container(
-//                 height: 50,
-//                 child: TextFormField(
-//                   decoration: const InputDecoration(
-//                     hintText: 'Enter your email',
-//                     prefixIcon: Icon(Icons.email),
-//                   ),
-//                 ),
-//               ),
-//             ),

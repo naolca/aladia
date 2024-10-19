@@ -123,6 +123,15 @@ class WidgetBookApp extends StatelessWidget {
                     hintText: 'Enter Email',
                     icon: Icons.email,
                     controller: emailController,
+                    isDisabled: false,
+                  )),
+          WidgetbookUseCase(
+              name: "Email Field(Disabled)",
+              builder: (context) => InputField(
+                    hintText: 'Enter Email',
+                    icon: Icons.email,
+                    controller: emailController,
+                    isDisabled: true,
                   )),
           WidgetbookUseCase(
               name: "Password Field",
@@ -131,6 +140,7 @@ class WidgetBookApp extends StatelessWidget {
                     icon: Icons.lock,
                     isPassword: true,
                     controller: passwordController,
+                    isDisabled: false,
                   )),
         ])
       ],
