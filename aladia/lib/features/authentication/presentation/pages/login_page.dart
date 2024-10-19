@@ -7,9 +7,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:aladia/features/authentication/presentation/bloc/login_bloc.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:aladia/features/authentication/presentation/bloc/login_bloc.dart';
 import 'package:aladia/shared/components/inputs/input_field.dart'; // Import the new InputField widget
 
 class LoginPage extends StatelessWidget {
@@ -20,7 +17,6 @@ class LoginPage extends StatelessWidget {
     final screenWidth = MediaQuery.of(context).size.width;
 
     final TextEditingController emailController = TextEditingController();
-    final TextEditingController passwordController = TextEditingController();
 
     return Scaffold(
       backgroundColor: Theme.of(context).primaryColor,
@@ -76,7 +72,9 @@ class LoginPage extends StatelessWidget {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => SignUpPage()),
+                                builder: (context) => SignUpPage(
+                                      email: emailController.text,
+                                    )),
                           );
                         });
                       }
@@ -183,16 +181,3 @@ class LoginPage extends StatelessWidget {
     );
   }
 }
-
-//  Padding(
-//               padding: const EdgeInsets.symmetric(horizontal: 40),
-//               child: Container(
-//                 height: 50,
-//                 child: TextFormField(
-//                   decoration: const InputDecoration(
-//                     hintText: 'Enter your email',
-//                     prefixIcon: Icon(Icons.email),
-//                   ),
-//                 ),
-//               ),
-//             ),

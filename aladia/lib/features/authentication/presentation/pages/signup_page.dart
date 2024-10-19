@@ -1,18 +1,13 @@
-import 'package:aladia/features/authentication/presentation/pages/password_fill_page.dart';
 import 'package:aladia/shared/components/buttons/action_button.dart';
-import 'package:aladia/shared/components/buttons/social_login_button.dart';
 import 'package:aladia/shared/components/cards/welcome_card.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:aladia/features/authentication/presentation/bloc/login_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:aladia/features/authentication/presentation/bloc/login_bloc.dart';
 import 'package:aladia/shared/components/inputs/input_field.dart'; // Import the new InputField widget
 
 class SignUpPage extends StatelessWidget {
-  const SignUpPage({super.key});
+  final String email;
+  const SignUpPage({super.key, required this.email});
 
   @override
   Widget build(BuildContext context) {
@@ -85,6 +80,19 @@ class SignUpPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 16),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 2),
+                    child: Container(
+                      height: 50,
+                      child: InputField(
+                        hintText: email,
+                        icon: Icons.email,
+                        controller: emailController,
+                        isDisabled: true,
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
 
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 2),
@@ -124,12 +132,7 @@ class SignUpPage extends StatelessWidget {
                     child: BlocBuilder<LoginBloc, LoginState>(
                       builder: (context, state) {
                         return ActionButton(
-                            onPressed: () {
-                              final email = emailController.text;
-                              // context
-                              //     .read<LoginBloc>()
-                              //     .add(CheckUserExistence(email));
-                            },
+                            onPressed: () {},
                             child: Text(
                               "Enter",
                               style: TextStyle(

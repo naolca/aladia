@@ -1,14 +1,11 @@
 import 'package:aladia/core/app_theme.dart';
-import 'package:aladia/features/authentication/presentation/bloc/login_bloc.dart';
-import 'package:aladia/features/authentication/presentation/pages/login_page.dart';
 import 'package:aladia/shared/components/buttons/action_button.dart';
 import 'package:aladia/shared/components/buttons/social_login_button.dart';
 import 'package:aladia/shared/components/cards/welcome_card.dart';
 import 'package:aladia/shared/components/inputs/input_field.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:widgetbook/widgetbook.dart';
-import 'package:widgetbook_annotation/widgetbook_annotation.dart' as widgetbook;
 
 void main() {
   runApp(const WidgetBookApp());
