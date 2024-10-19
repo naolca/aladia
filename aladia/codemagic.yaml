@@ -1,0 +1,12 @@
+workflows:
+  test_workflow:
+    name: Run Tests
+    environment:
+      flutter: stable
+    scripts:
+      - name: Install dependencies
+        script: flutter pub get
+      - name: Run unit tests
+        script: flutter test --coverage
+    artifacts:
+      - build/**

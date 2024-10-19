@@ -10,6 +10,13 @@ class LoginRequest {
       "password": password,
     };
   }
+
+  factory LoginRequest.fromJson(Map<String, dynamic> json) {
+    return LoginRequest(
+      email: json['email'],
+      password: json['password'],
+    );
+  }
 }
 
 class LoginResponse {
