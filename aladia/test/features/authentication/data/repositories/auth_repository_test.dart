@@ -30,8 +30,12 @@ class MockAuthDataSourceFailure extends AuthRemoteDataSource {
 }
 
 void main() {
-  group("Auth repository usecases when successful", () {
-    test("should return a valid response", () async {
+  group(
+      "Auth repository usecases when successful login and check user usecases",
+      () {
+    test(
+        "When the Credential filled by the user is correct, the repository should return a success response with the accesstoken",
+        () async {
       final authDataSource = MockAuthDataSourceSuccess();
 
       final authRepository = AuthRepositoryImpl(authDataSource);
@@ -40,7 +44,9 @@ void main() {
       expect(response.accessToken, "accessToken");
     });
 
-    test("should return true", () async {
+    test(
+        "Upon a true value return of a user check to the datasource, the repository should return a true value",
+        () async {
       final authDataSource = MockAuthDataSourceSuccess();
 
       final authRepository = AuthRepositoryImpl(authDataSource);
@@ -50,8 +56,9 @@ void main() {
     });
   });
 
-  group("Auth repository usecases when unsuccessful", () {
-    test("should throw an exception", () async {
+  group("Auth repository when Login and Check user usecases are unsuccessful",
+      () {
+    test("should throw an exception upon wrong credentials", () async {
       final authDataSource = MockAuthDataSourceFailure();
 
       final authRepository = AuthRepositoryImpl(authDataSource);
@@ -61,7 +68,7 @@ void main() {
           throwsException);
     });
 
-    test("should return false", () async {
+    test("should return false upon a finding a user doesn't exist", () async {
       final authDataSource = MockAuthDataSourceFailure();
 
       final authRepository = AuthRepositoryImpl(authDataSource);

@@ -32,8 +32,10 @@ class MockAuthRepositoryLoginFailure extends AuthRepository {
 }
 
 void main() {
-  group("LoginUseCase", () {
-    test("should return a valid response", () async {
+  group("LoginUseCase Tests", () {
+    test(
+        "if the repository returns a success message upon login attempt, it should return a valid response",
+        () async {
       // create a mock repository class instance
       final authRepository = MockAuthRepositoryLoginSuccess();
 
@@ -44,7 +46,8 @@ void main() {
       expect(response.accessToken, "accessToken");
     });
 
-    test("should throw an exception", () async {
+    test("should throw an exception if the login attemp isn't successful",
+        () async {
       final authrepository = MockAuthRepositoryLoginFailure();
       final loginUseCase = LoginUseCase(authrepository);
       expect(

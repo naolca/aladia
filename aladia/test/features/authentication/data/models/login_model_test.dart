@@ -3,7 +3,9 @@ import "package:flutter_test/flutter_test.dart";
 
 void main() {
   group("LoginModel", () {
-    test("should return  a valid model", () {
+    test(
+        "Upon a correct initialization, the LoginModel object should be correct.",
+        () {
       final Map<String, dynamic> json = {
         "email": "firaol@gmail.com",
         "password": "password"
@@ -14,7 +16,9 @@ void main() {
       expect(model.password, "password");
     });
 
-    test("should return a valid json", () {
+    test(
+        "A correct JSON object should be create from a LoginModel class upon need",
+        () {
       final model =
           LoginRequest(email: "firaol@gmail.com", password: "password");
       final json = model.toJson();
@@ -23,7 +27,9 @@ void main() {
       expect(json["password"], "password");
     });
 
-    test("should return a valid response model", () {
+    test(
+        "Upon a correct initialization from a JSON Object, the LoginModel object should be correct.",
+        () {
       final Map<String, dynamic> json = {"accessToken": "accessToken"};
       final model = LoginResponse.fromJson(json);
 

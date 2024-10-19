@@ -56,18 +56,20 @@ class MockUserExistenceUseCaseFailure extends UserExistenceUseCase {
 }
 
 void main() {
-  group("LoginBloc When the operations are successful", () {
+  group("LoginBloc When the operations are successful(No failures)", () {
     final mockAuthRepository = MockAuthRepository();
     final mockUserExistenceUseCase =
         MockUserExistenceUseCaseSuccess(mockAuthRepository);
 
-    test("should return a valid state", () {
+    test("should return a valid initial state ", () {
       final loginUseCase = MockLoginUseCaseSuccess(mockAuthRepository);
       final loginBloc = LoginBloc(loginUseCase, mockUserExistenceUseCase);
       expect(loginBloc.state, isA<LoginInitial>());
     });
 
-    test("should return a valid state", () async {
+    test(
+        "should return a valid state(in the correct sequence) when a login attempt is successful",
+        () async {
       final loginUseCase = MockLoginUseCaseSuccess(mockAuthRepository);
       final loginBloc = LoginBloc(loginUseCase, mockUserExistenceUseCase);
 
@@ -89,13 +91,15 @@ void main() {
     final mockUserExistenceUseCase =
         MockUserExistenceUseCaseFailure(mockAuthRepository);
 
-    test("should return a valid state", () {
+    test("should return a valid initial state state", () {
       final loginUseCase = MockLoginUseCaseFailure(mockAuthRepository);
       final loginBloc = LoginBloc(loginUseCase, mockUserExistenceUseCase);
       expect(loginBloc.state, isA<LoginInitial>());
     });
 
-    test("should return a valid state", () async {
+    test(
+        "should return a valid state(in the correct sequence)upon a failed login attempt",
+        () async {
       final loginUseCase = MockLoginUseCaseFailure(mockAuthRepository);
       final loginBloc = LoginBloc(loginUseCase, mockUserExistenceUseCase);
 

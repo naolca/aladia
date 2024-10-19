@@ -6,22 +6,87 @@ class WelcomeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Determine the image based on the theme
-    final String backgroundImage =
-        Theme.of(context).brightness == Brightness.dark
-            ? 'assets/images/gradient.png'
-            : 'assets/images/light_gradient.png';
-
+    bool isLightTheme = Theme.of(context).brightness == Brightness.light;
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
       child: Container(
-        height: 180,
+        height: 145,
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
           borderRadius: BorderRadius.circular(10.0),
-          image: DecorationImage(
-            image: AssetImage(backgroundImage), // Set the background image here
-            fit: BoxFit.cover,
+          border: Border.all(
+            color: Theme.of(context).textTheme.displayMedium!.color!,
+            width: 0.3,
+          ),
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            transform: GradientRotation(
+                -4.7), // Convert degrees to radians for rotation
+            colors: isLightTheme
+                ? [
+                    Color(0xFFFFFFFF), // White
+                    Color(0xFFFFFFFF), // White
+                    Color(0xFFFFFFFF), // White
+                    Color(0xFFFFFFFF), // White
+                    Color(0xFFFFFFFF), // White
+                    Color(0xFFFFFFFF), // White
+                    Color(0xFFFFFFFF), // White
+                    Color.fromARGB(255, 160, 159, 159), // Lighter gray
+                    Color(0xFFFFFFFF), // White
+                    Color(0xFFFFFFFF), // White
+                    Color(0xFFFFFFFF), // White
+                    // Color(0xFF1A1A1A), // Very dark gray
+                    // Color(0xFF1A1A1A), // Very dark gray
+                    Color.fromARGB(255, 160, 159, 159), // Lighter gray
+                    Color.fromARGB(255, 160, 159, 159), // Lighter gray
+
+                    Color(0xFFFFFFFF), // White
+                    Color(0xF0FFFFFF), // Transparent white
+                    Color(0xFFFFFFFF), // White
+                    Color(0xFFFFFFFF), // White
+                    Color(0xFFFFFFFF), // White
+                  ]
+                : [
+                    Color(0xFF000000), // Deep black
+                    Color(0xFF000000), // Deep black
+                    Color(0xFF000000), // Deep black
+                    Color(0xFF000000), // Deep black
+                    Color(0xFF000000), // Deep black
+                    Color(0xFF000000), // Deep black
+                    Color(0xFF000000), // Deep black
+                    Color(0xFF6E6E6E), // Lighter gray
+                    Color(0xFF000000), // Deep black
+                    Color(0xFF000000), // Deep black
+                    Color(0xFF000000), // Deep black
+                    Color(0xFF1A1A1A), // Very dark gray
+                    Color(0xFF1A1A1A), // Very dark gray
+                    Color(0xFF000000), // Deep black
+                    Color(0xF0000000), // Transparent black
+                    Color(0xFF000000), // Deep black
+                    Color(0xFF000000), // Deep black
+                    Color(0xFF000000), // Deep black
+                  ],
+            stops: [
+              0.0, // Deep black
+              0.1, // Deep black
+              0.2, // Deep black
+              0.3, // Deep black
+              0.4, // Deep black
+              0.45, // Deep black
+              0.49, // Deep black
+              0.5, // Silver (thin)
+              0.51, // Deep black
+              0.53,
+              0.54,
+              0.58, // Very dark gray
+              0.6, // Very dark gray
+              0.7, // Deep black
+              0.8, // Transparent black
+              0.9, // Deep black
+              0.95, // Deep black
+              1.0, // Deep black
+            ],
           ),
         ),
         child: Center(
