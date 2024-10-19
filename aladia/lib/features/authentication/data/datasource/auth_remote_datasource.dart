@@ -43,7 +43,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
     );
 
     if (response.statusCode == 200) {
-      return true;
+      return json.decode(response.body)['exists'];
     } else if (response.statusCode == 404) {
       return false;
     } else {

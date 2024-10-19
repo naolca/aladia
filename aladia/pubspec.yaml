@@ -40,6 +40,7 @@ dependencies:
   http: ^1.2.2
   widgetbook: ^3.6.0
   widgetbook_annotation: ^3.1.0
+  shared_preferences: ^2.2.3
 
 dev_dependencies:
   flutter_test:

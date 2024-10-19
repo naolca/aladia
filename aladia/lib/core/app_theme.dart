@@ -6,9 +6,7 @@ class AppTheme {
     primaryColor: Colors.white,
     cardColor: Colors.teal[50],
     brightness: Brightness.light,
-    appBarTheme: AppBarTheme(
-      color: Colors.blue,
-    ),
+    appBarTheme: AppBarTheme(color: Colors.transparent),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.white,
@@ -37,9 +35,7 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
     brightness: Brightness.dark,
     primaryColor: Colors.black,
-    appBarTheme: AppBarTheme(
-      color: Colors.blueGrey[900],
-    ),
+    appBarTheme: AppBarTheme(color: Colors.transparent),
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.black,

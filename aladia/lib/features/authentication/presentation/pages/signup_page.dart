@@ -40,6 +40,22 @@ class SignUpPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.fromLTRB(0, 30, 0, 0),
+                      child: GestureDetector(
+                          onTap: () {
+                            Navigator.of(context).pop();
+                          },
+                          child: const Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(Icons.arrow_back),
+                              Text('Back to login'),
+                            ],
+                          )),
+                    ),
+                  ),
                   WelcomeCard(),
                   // Email input field
                   Padding(
@@ -54,6 +70,8 @@ class SignUpPage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 16),
+
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 2),
                     child: Container(
@@ -66,6 +84,7 @@ class SignUpPage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 16),
 
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 2),
@@ -79,6 +98,7 @@ class SignUpPage extends StatelessWidget {
                       ),
                     ),
                   ),
+                  const SizedBox(height: 16),
 
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 2),

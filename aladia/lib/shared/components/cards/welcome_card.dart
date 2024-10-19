@@ -6,18 +6,21 @@ class WelcomeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Determine the image based on the theme
+    final String backgroundImage =
+        Theme.of(context).brightness == Brightness.dark
+            ? 'assets/images/gradient.png'
+            : 'assets/images/light_gradient.png';
+
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 20),
       child: Container(
         height: 180,
         decoration: BoxDecoration(
           color: Theme.of(context).cardColor,
-          //you can an image as a backgound later
-
           borderRadius: BorderRadius.circular(10.0),
           image: DecorationImage(
-            image: AssetImage(
-                'assets/images/gradient.png'), // Set the background image here
+            image: AssetImage(backgroundImage), // Set the background image here
             fit: BoxFit.cover,
           ),
         ),
@@ -25,7 +28,7 @@ class WelcomeCard extends StatelessWidget {
           child: Row(
             children: [
               Container(
-                width: 150,
+                width: 125,
                 child: Image.asset(
                   'assets/images/aladia_logo.png',
                   fit: BoxFit.cover,
@@ -33,7 +36,7 @@ class WelcomeCard extends StatelessWidget {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.fromLTRB(0, 0, 0, 0),
+                  padding: EdgeInsets.fromLTRB(25, 0, 0, 0),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
