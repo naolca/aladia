@@ -35,7 +35,6 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<bool> checkUserExistence(String email) async {
-    print("this got called");
     final response = await http.post(
       Uri.parse('$baseUrl/auth/user-existence'),
       headers: {"Content-Type": "application/json"},
