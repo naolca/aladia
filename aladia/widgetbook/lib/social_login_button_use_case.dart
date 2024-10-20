@@ -32,7 +32,7 @@ Widget buildSocialLoginButtonAppleUseCase(BuildContext context) {
     icon: Image.asset('assets/icons/apple.png', height: 24),
     label: 'Sign in with Apple',
     onPressed: () {
-      print('Apple login pressed');
+      print('Apple login pressed...');
     },
   );
 }
