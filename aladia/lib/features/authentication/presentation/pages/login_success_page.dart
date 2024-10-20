@@ -9,12 +9,15 @@ class LoginSuccessPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Container(
-          child: Column(
-            children: [
-              Image.asset("assets/images/aladia_logo.png"),
-              Text("Login Successful")
-            ],
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(70, 100, 70, 0),
+          child: Container(
+            child: Column(
+              children: [
+                Image.asset("assets/images/aladia_logo.png"),
+                Text("Login Successful")
+              ],
+            ),
           ),
         ),
       ),
