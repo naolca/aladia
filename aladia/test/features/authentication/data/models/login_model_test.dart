@@ -17,7 +17,7 @@ void main() {
     });
 
     test(
-        "A correct JSON object should be create from a LoginModel class upon need",
+        "A correct JSON object should be create from a LoginModel class upon need.",
         () {
       final model =
           LoginRequest(email: "firaol@gmail.com", password: "password");
