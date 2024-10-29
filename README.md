@@ -1,6 +1,4 @@
-Here's an example of an excellent README file that you can customize for your project. It demonstrates the architecture, features, and setup instructions for your application:
 
----
 
 # 📱 My Awesome Flutter App
 
